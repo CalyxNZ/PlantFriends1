@@ -1,0 +1,88 @@
+﻿@model PlantFriends1.Models.Plant
+
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Plant Details</h2>
+<hr />
+<div class="container" style="background-color: rgba(194,255,255,0.8); border: 1px solid black; border-radius: 5px; box-shadow: rgba(0,0,0,.4) -3px 4px; margin-top: 20px; padding-bottom: 15px; overflow: hidden;">
+    <h3>@Html.DisplayFor(model => model.Name)</h3>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+    </dl>
+    <hr />
+    <div>
+        <div class="container" style="background-color: rgba(233,233,233,1); border: 1px solid black; border-radius: 5px; box-shadow: rgba(0,0,0,.4) -3px 4px; margin-top: 20px; padding-bottom: 15px; width: 100%; display: block; overflow: auto; align-items: center; text-align: center; justify-content: space-around; ">
+            <h3>
+                Companions for @Html.DisplayFor(model => model.Name):
+            </h3>
+            @foreach (var item in ViewBag.Companions)
+            {
+                <div style="background-color: rgba(53,134,0,0.1); border: 4px solid rgba(53,134,0,1); border-radius: 5px; box-shadow: rgba(164,233,174,1) -3px 4px; margin-top: 20px; width: 18%; min-width: fit-content; display: inline-grid; padding: 15px; padding-bottom: 10px; align-items: center; justify-content: space-evenly; ">
+                   <div>
+                       <img src="~/img/plant.png" style="background-color: rgba(233,233,233,1); width: 100px; height: 100px; border: 1px solid gray; border-radius: 5px; padding: 10px; margin: 0px;" />
+                   </div>                    
+                    @*<span> @item.CompanionPlant.Name </span>*@
+                    <br />
+                    <div>
+                        <p><a href="@item.CompanionPlant.PlantId" class="btn btn-primary btn-m">@item.CompanionPlant.Name &raquo;</a></p>
+                    </div>                
+                </div>
+
+            }
+        </div>
+    </div>
+    <hr />
+    <div>
+        <div class="container" style="background-color: rgba(233,233,233,1); border: 1px solid black; border-radius: 5px; box-shadow: rgba(0,0,0,.4) -3px 4px; margin-top: 20px; padding-bottom: 15px; width: 100%; display: block; overflow: auto; align-items: center; text-align: center; justify-content: space-evenly; ">
+            <h3>
+                Avoid Planting These Plants Near @Html.DisplayFor(model => model.Name):
+            </h3>
+            @foreach (var item in ViewBag.Enemies)
+            {
+                <div style="background-color: rgba(159,74,84,0.1); border: 3px solid rgba(159,74,84,1); border-radius: 5px; box-shadow: rgba(255,0,0,.3) -3px 4px; margin-top: 20px; width: 18%; min-width: fit-content; display: inline-grid; padding: 15px; padding-bottom: 10px; align-items: center; justify-content: center; ">
+                    <div>
+                        <img src="~/img/plant.png" style="background-color: rgba(233,233,233,1); width: 100px; height: 100px; border: 1px solid gray; border-radius: 5px; padding: 10px; margin: 0px;" />
+                    </div>
+                    @*<span> @item.CompanionPlant.Name</span>*@
+                    @*<span> @Html.ActionLink(@item.CompanionPlant.Name, "Details", "Plants", new { id = item.CompanionPlant.PlantId }, null)</span>*@
+                    <br />
+                    <div>
+                        <p><a href="@item.CompanionPlant.PlantId" class="btn btn-primary btn-m">@item.CompanionPlant.Name &raquo;</a></p>
+                    </div>                
+                </div>
+
+
+            }
+        </div>
+    </div>
+    <p style="padding-top: 15px;">This information is derived and adapted from multiple sources. Read about them Here: <a href="~/Views/Home/About">Our Sources</a></p>
+</div>
+
+<hr />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

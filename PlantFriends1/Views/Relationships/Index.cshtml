@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PlantFriends1.Models.Relationship>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Add a Relationship Between Plants</h2>
+<h4>Click Add New, to add a relationship, or find one in the list below to edit.</h4>
+@*<p>
+        @Html.ActionLink("Add New", "Create")
+    </p>*@
+<p class=""><a href="/relationships/create" class="btn btn-primary btn-lg">Add New &raquo;</a></p>
+
+<hr />
+
+<div class="container" style="background-color: rgba(194,255,255,0.8); border: 1px solid black; border-radius: 5px; box-shadow: rgba(0,0,0,.4) -3px 4px; margin-top: 20px; padding-bottom: 15px; overflow: hidden;">
+
+    @*<div style="display: inline-block; margin: 10px;">
+        @using (Html.BeginForm("Index", "Plants", FormMethod.Get))
+        {
+            <label>Filter by Host Plant:</label> @Html.DropDownList("Category", "All")
+            <input type="submit" value="Filter" />
+            <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
+        }
+    </div>
+    <div style="display: inline-block; margin: 10px;">
+        @using (Html.BeginForm("Index", "Plants", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+        {
+            <div class="form-group">
+                @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search Plants" })
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        }
+    </div>*@
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HostPlant.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelationshipType.RelationshipName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanionPlant.Name)
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HostPlant.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RelationshipType.RelationshipName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanionPlant.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RelationshipId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RelationshipId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RelationshipId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

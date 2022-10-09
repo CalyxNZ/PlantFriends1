@@ -1,0 +1,45 @@
+﻿@model PlantFriends1.Models.Relationship
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Host-Companion Relationship Details</h2>
+
+<div>
+    <h4>Relationship</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HostPlant.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HostPlant.Name)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RelationshipType.RelationshipName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RelationshipType.RelationshipName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanionPlant.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanionPlant.Name)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RelationshipId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

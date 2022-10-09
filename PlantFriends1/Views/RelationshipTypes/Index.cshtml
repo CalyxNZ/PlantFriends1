@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PlantFriends1.Models.RelationshipType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Types of Plant Relationships</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<p class=""><a href="/RelationshipTypes/Create" class="btn btn-primary btn-lg">Add New &raquo;</a></p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RelationshipName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelationshipName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RelationshipTypeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RelationshipTypeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RelationshipTypeId })
+            </td>
+        </tr>
+    }
+
+</table>
